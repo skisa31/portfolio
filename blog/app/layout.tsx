@@ -1,9 +1,6 @@
-import './globals.css'
+// import './globals.css'
 import Header from './header'
 import Footer from './footer'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Kisa\'s Blog',
@@ -16,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="jp">
+    <html lang="ja">
       <body>
         <div className='flex flex-col min-h-screen'>
           <Header />
