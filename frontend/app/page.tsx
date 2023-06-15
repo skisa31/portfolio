@@ -1,20 +1,20 @@
-'use client';
-
-import { useState, useEffect } from 'react';
+import Head from 'next/head';
 
 export default function Home() {
-  const [message, setMessage] = useState('')
-
-  useEffect(() => {
-    fetch('http:127.0.0.1:5000/')
-      .then((res) => res.text())
-      .then((data) => setMessage(data))
-  }, [])
-
   return (
-    <div>
-      <h1>Next.js + Flask</h1>
-      <p>{message}</p>
-    </div>
+    <>
+      <Head>
+        <meta charSet="utf-8" />
+        <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
+        <h1>
+          Main page
+        </h1>
+      </Head>
+    </>
   )
 }
