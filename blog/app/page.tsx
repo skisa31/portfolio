@@ -1,6 +1,17 @@
-import Image from 'next/image'
+import fs from 'fs';
+import { get } from 'http';
 
-export default function Home() {
+const getData = async () => {
+  const posts: string[] = fs.readdirSync('app/posts');
+  console.log('files:', posts);
+  return {
+    posts: [],
+  };
+};
+
+export default async function Home({ posts }) {
+  await getData();
+
   return (
     <div className='my-8'>
       コンテンツ
