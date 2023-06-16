@@ -1,5 +1,5 @@
 ---
-tilte: 'Next.jsでMarkdownで書けるブログを作る'
+title: 'Next.jsでMarkdownで書けるブログを作る'
 date: '2023-06-16'
 tags: ['Next.js', 'Markdown']
 ---
