@@ -1,5 +1,6 @@
 import fs from 'fs';
 import matter from 'gray-matter';
+import markdownhtml from 'zenn-markdown-html';
 
 export const generateStaticParams = async () => {
   const files = fs.readdirSync('posts');
@@ -19,10 +20,11 @@ export const getData = async (slug: string) => {
 export default async function Page({ params }: { slug: string }) {
   const slug: string = params.slug;
   const page = await getData(slug);
+  const html = markdownhtml(page.frontMatter.content);
   return (
     <div>
       <h1>{page.frontMatter.data.title}</h1>
-      <div>{page.frontMatter.content}</div>
+      <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   )
 };
