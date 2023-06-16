@@ -4,10 +4,10 @@ import { get } from 'http';
 const getData = async () => {
   const files: string[] = fs.readdirSync('app/posts');
   const posts = files.map((filename: string) => {
+    const slog: string = filename.replace(/\.md$/, '');
     const fileContent = fs.readFileSync(`app/posts/${filename}`, 'utf-8');
-    console.log('fileContent:', fileContent);
+    console.log('slug:', slog);
   });
-  console.log('files:', posts);
   return {
     posts: [],
   };
