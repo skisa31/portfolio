@@ -1,6 +1,6 @@
 import fs from 'fs';
 import matter from 'gray-matter';
-import Link from 'next/link';
+import PostCard from './components/PostCard';
 
 const getData = async () => {
   const files: string[] = fs.readdirSync('app/posts');
@@ -25,11 +25,7 @@ export default async function Home() {
   return (
     <div className='my-8'>
       {posts.map((post) => (
-        <div key={post.slug}>
-          <Link href={`/post/${post.slug}`}>
-            {post.frontMatter.title}
-          </Link>
-        </div>
+        <PostCard key={post.slug} post={post} />
       ))}
     </div>
   )
