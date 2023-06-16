@@ -24,9 +24,11 @@ export default async function Home() {
   console.log(posts);
   return (
     <div className='my-8'>
-      {posts.map((post) => (
-        <PostCard key={post.slug} post={post} />
-      ))}
+      <div className='grid grid-cols-3'>
+        {posts.map((post) => (
+          <PostCard key={post.slug} post={post} />
+        ))}
+      </div>
     </div>
   )
 }
