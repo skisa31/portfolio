@@ -5,5 +5,6 @@ tags: ['Next.js', 'Markdown']
 image: NEXTJS_sample.png
 ---
 
-# Next.jsでMarkdownで書けるブログを作る
+# 最初の記事
+## Next.js
 最初の記事です。
