@@ -1,5 +1,6 @@
 import fs from 'fs';
 import matter from 'gray-matter';
+import Link from 'next/link';
 
 const getData = async () => {
   const files: string[] = fs.readdirSync('app/posts');
@@ -21,10 +22,15 @@ const getData = async () => {
 export default async function Home() {
   const { posts } = await getData();
   console.log(posts);
-
   return (
     <div className='my-8'>
-      コンテンツ
+      {posts.map((post) => (
+        <div key={post.slug}>
+          <Link href={`/post/${post.slug}`}>
+            {post.frontMatter.title}
+          </Link>
+        </div>
+      ))}
     </div>
   )
 }
