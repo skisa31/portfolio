@@ -2,7 +2,7 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import PostCard from './components/PostCard';
 
-const getData = async () => {
+export const getData = async () => {
   const files: string[] = fs.readdirSync('posts');
   const posts = files.map((filename: string) => {
     const slug: string = filename.replace(/\.md$/, '');
