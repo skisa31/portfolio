@@ -1,7 +1,9 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import markdownhtml from 'zenn-markdown-html';
+import { JSDOM } from 'jsdom';
 import Image from 'next/image';
+import { table } from 'console';
 
 export const generateStaticParams = async () => {
   const files = fs.readdirSync('posts');
@@ -10,23 +12,42 @@ export const generateStaticParams = async () => {
   }));
 }
 
+type TableOfContent = {
+  level: string,
+  title: string,
+  href: string,
+}
+
 export const getData = async (slug: string) => {
   const file: string = fs.readFileSync(`posts/${slug}.md`, 'utf-8');
   const { data, content } = matter(file);
+  const dom = new JSDOM(markdownhtml(content));
+
+  const elements = dom.window.document.querySelectorAll('h1, h2');
+  const tableOfContent: TableOfContent[] = [];
+  elements.forEach((element) => {
+    const level = element.tagName;
+    const title = element.innerHTML.split("</a>")[1];
+    const href = element.id;
+    const record = { level: level, title: title, href: href };
+    tableOfContent.push(record);
+  });
+
   return {
     frontMatter: { data, content },
+    tableOfContent,
   };
 };
 
-export async function generateMetadata({ slug }: { slug: string }) {
-  const page = await getData(slug);
+export async function generateMetadata({ params }: { slug: string }) {
+  const page = await getData(params.slug);
   const metadata = {
     title: page.frontMatter.data.title,
     description: page.frontMatter.data.description,
     openGraph: {
       title: page.frontMatter.data.title,
       description: page.frontMatter.data.description,
-      url: `https://kisa-ss/blog/post/${slug}`,
+      url: `https://kisa-ss/blog/post/${params.slug}`,
       siteName: 'Kisaの日常ブログ',
       local: 'ja_JP',
       type: 'article',
@@ -39,7 +60,7 @@ export async function generateMetadata({ slug }: { slug: string }) {
       creator: '@shk4346',
     },
     alternates: {
-      canonical: `https://kisa-ss/blog/post/${slug}`,
+      canonical: `https://kisa-ss/blog/post/${params.slug}`,
     },
   };
   return metadata;
@@ -48,9 +69,9 @@ export async function generateMetadata({ slug }: { slug: string }) {
 export default async function Page({ params }: { slug: string }) {
   const slug: string = params.slug;
   const page = await getData(slug);
-  const html = markdownhtml(page.frontMatter.content);
+  const articleHtml = markdownhtml(page.frontMatter.content);
   return (
-    <div className='prose prose-lg max-w-none'>
+    <div className='prose prose-lg w-screen'>
       <div className='border flex justify-center'>
         <Image
           src={`/${page.frontMatter.data.image}`}
@@ -62,7 +83,33 @@ export default async function Page({ params }: { slug: string }) {
       </div>
       <h1 className='mt-12'>{page.frontMatter.data.title}</h1>
       <span>{page.frontMatter.data.date}</span>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <div dangerouslySetInnerHTML={{ __html: articleHtml }} />
+
+      <div className='hidden md:block w-72 ml-3'>
+        <div className='flex flex-col sticky top-6'>
+          <div className='p-4 border rounded-xl mb-6 bg-white'>
+            <p className='text-xl text-bold mb-4'>目次</p>
+            <ul>
+              {page.tableOfContent.map((anchor) => {
+                if (anchor.level === 'H1') {
+                  return (
+                    <li className='mb-2' key={anchor.href}>
+                      <a href={`#${anchor.href}`}>{anchor.title}</a>
+                    </li>
+                  );
+                } else {
+                  return (
+                    <li className='ml-4 mb-2' key={anchor.href}>
+                      <a href={`#${anchor.href}`}>{anchor.title}</a>
+                    </li>
+                  );
+                }
+              })}
+            </ul>
+          </div>
+        </div>
+      </div>
+
     </div>
   )
 };
