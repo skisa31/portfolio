@@ -1,6 +1,7 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import markdownhtml from 'zenn-markdown-html';
+import Image from 'next/image';
 
 export const generateStaticParams = async () => {
   const files = fs.readdirSync('posts');
@@ -22,8 +23,18 @@ export default async function Page({ params }: { slug: string }) {
   const page = await getData(slug);
   const html = markdownhtml(page.frontMatter.content);
   return (
-    <div>
-      <h1>{page.frontMatter.data.title}</h1>
+    <div className='prose prose-lg max-w-none'>
+      <div className='border flex justify-center'>
+        <Image
+          src={`/${page.frontMatter.data.image}`}
+          width={800}
+          height={400}
+          alt={page.frontMatter.data.title}
+          className="object-contain m-auto h-full"
+        />
+      </div>
+      <h1 className='mt-12'>{page.frontMatter.data.title}</h1>
+      <span>{page.frontMatter.data.date}</span>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   )
