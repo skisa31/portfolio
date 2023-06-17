@@ -10,17 +10,21 @@ const Header = () => {
           </Link>
         </div>
         <span className='flex-1'></span>
-        <div className='text-xl px-4 py-2 transition duration-300 hover:scale-110'>
-          About
-        </div>
-        <div className='text-xl px-4 py-2 transition duration-300 hover:scale-110'>
-          Article
-        </div>
-        <div className='text-xl px-4 py-2 transition duration-300 hover:scale-110'>
-          <Link href="http://localhost:3031">Blog</Link>
-        </div>
-        <div className='text-xl px-4 py-2 transition duration-300 hover:scale-110'>
-          Contact
+        <div>
+          <ul className='flex text-xl'>
+            <li className='px-4 py-2 transition duration-300 hover:scale-110'>
+              About
+            </li>
+            <li className='px-4 py-2 transition duration-300 hover:scale-110'>
+              Article
+            </li>
+            <li className='px-4 py-2 transition duration-300 hover:scale-110'>
+              <Link href="http://localhost:3031">Blog</Link>
+            </li>
+            <li className='px-4 py-2 transition duration-300 hover:scale-110'>
+              <Link href='/contact'> Contact </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </header>
