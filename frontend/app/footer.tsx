@@ -11,14 +11,14 @@ const Footer = () => {
         </div>
         <span className="flex-1"></span>
         <div className="pt-4 px-2">
-          <Link href="https://twitter.com/shk4346">
+          <a href="https://twitter.com/shk4346" target="_brank" rel="noopener noreferrer">
             <AiFillTwitterCircle size={24} />
-          </Link>
+          </a>
         </div>
         <div className="pt-4 px-2">
-          <Link href="https://github.com/skisa31">
+          <a href="https://github.com/skisa31" target="_brank" rel="noopener noreferrer">
             <AiFillGithub size={24} />
-          </Link>
+          </a>
         </div>
       </div>
     </footer>
