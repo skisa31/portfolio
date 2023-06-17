@@ -10,16 +10,16 @@ const Header = () => {
           </Link>
         </div>
         <span className='flex-1'></span>
-        <div className='text-xl px-4 py-2 hover:bg-gray-200'>
+        <div className='text-xl px-4 py-2 transition duration-300 hover:scale-110'>
           About
         </div>
-        <div className='text-xl px-4 py-2 hover:bg-gray-200'>
+        <div className='text-xl px-4 py-2 transition duration-300 hover:scale-110'>
           Article
         </div>
-        <div className='text-xl px-4 py-2 hover:bg-gray-200'>
+        <div className='text-xl px-4 py-2 transition duration-300 hover:scale-110'>
           Blog
         </div>
-        <div className='text-xl px-4 py-2 hover:bg-gray-200'>
+        <div className='text-xl px-4 py-2 transition duration-300 hover:scale-110'>
           Contact
         </div>
       </div>
