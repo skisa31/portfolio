@@ -2,19 +2,13 @@ import Head from 'next/head';
 
 export default function Home() {
   return (
-    <>
-      <Head>
-        <meta charSet="utf-8" />
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
-        <h1>
-          Main page
-        </h1>
-      </Head>
-    </>
+    <div className='max-w-6xl mx-auto'>
+      <div className='text-6xl mx-auto pt-20 text-center'>
+        <h1>Kisa&apos;s Portfolio</h1>
+      </div>
+      <div className='text-2xl mx-auto pt-4 text-center'>
+        <h2>このサイトはKisaのポートフォリオサイトです．</h2>
+      </div>
+    </div>
   )
 }
