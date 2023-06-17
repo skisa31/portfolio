@@ -5,7 +5,7 @@ const Header = () => {
     <header className='sticky top-0 border-b z-10 bg-white'>
       <div className='max-w-6xl mx-auto flex justify-between items-center h-12 roboto.variable'>
         <div className='h-max text-2xl hover:cursor-pointer'>
-          <Link href="/">
+          <Link href="http://localhost:3001">
             Kisa&apos;s Blog
           </Link>
         </div>
