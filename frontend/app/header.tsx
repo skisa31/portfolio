@@ -17,7 +17,7 @@ const Header = () => {
           Article
         </div>
         <div className='text-xl px-4 py-2 transition duration-300 hover:scale-110'>
-          Blog
+          <Link href="http://localhost:3031">Blog</Link>
         </div>
         <div className='text-xl px-4 py-2 transition duration-300 hover:scale-110'>
           Contact
