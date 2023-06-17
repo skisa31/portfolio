@@ -27,7 +27,7 @@ export default async function Home() {
   const { posts } = await getData();
   return (
     <div className='my-8'>
-      <div className='grid grid-cols-3 gap-4'>
+      <div className='grid grid-cols-4 gap-4'>
         {posts.map((post) => (
           <PostCard key={post.slug} post={post} />
         ))}
