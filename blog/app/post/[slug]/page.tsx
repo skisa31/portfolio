@@ -18,6 +18,33 @@ export const getData = async (slug: string) => {
   };
 };
 
+export async function generateMetadata({ slug }: { slug: string }) {
+  const page = await getData(slug);
+  const metadata = {
+    title: page.frontMatter.data.title,
+    description: page.frontMatter.data.description,
+    openGraph: {
+      title: page.frontMatter.data.title,
+      description: page.frontMatter.data.description,
+      url: `https://kisa-ss/blog/post/${slug}`,
+      siteName: 'Kisaの日常ブログ',
+      local: 'ja_JP',
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: page.frontMatter.data.title,
+      description: page.frontMatter.data.description,
+      site: '@shk4346',
+      creator: '@shk4346',
+    },
+    alternates: {
+      canonical: `https://kisa-ss/blog/post/${slug}`,
+    },
+  };
+  return metadata;
+}
+
 export default async function Page({ params }: { slug: string }) {
   const slug: string = params.slug;
   const page = await getData(slug);
