@@ -14,8 +14,12 @@ export const getData = async () => {
     };
   });
 
+  const sortedPosts = posts.sort((a, b) =>
+    new Date(a.frontMatter.date) > new Date(b.frontMatter.date) ? -1 : 1
+  );
+
   return {
-    posts
+    posts: sortedPosts,
   };
 };
 
@@ -23,7 +27,7 @@ export default async function Home() {
   const { posts } = await getData();
   return (
     <div className='my-8'>
-      <div className='grid grid-cols-3'>
+      <div className='grid grid-cols-3 gap-4'>
         {posts.map((post) => (
           <PostCard key={post.slug} post={post} />
         ))}
