@@ -4,6 +4,8 @@ import markdownhtml from 'zenn-markdown-html';
 import { JSDOM } from 'jsdom';
 import Image from 'next/image';
 import { table } from 'console';
+import Header from '../../header';
+import Footer from '../../footer';
 
 export const generateStaticParams = async () => {
   const files = fs.readdirSync('posts');
@@ -71,7 +73,7 @@ export default async function Page({ params }: { slug: string }) {
   const page = await getData(slug);
   const articleHtml = markdownhtml(page.frontMatter.content);
   return (
-    <div className='prose prose-lg w-screen'>
+    <div className='prose prose-lg w-screen mx-auto'>
       <div className='border flex justify-center'>
         <Image
           src={`/${page.frontMatter.data.image}`}
@@ -109,7 +111,6 @@ export default async function Page({ params }: { slug: string }) {
           </div>
         </div>
       </div>
-
     </div>
   )
 };
