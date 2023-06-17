@@ -1,7 +1,22 @@
 import './globals.css'
 import Header from './header';
 import Footer from './footer';
-import { Inter } from 'next/font/google'
+import { Noto_Sans_JP } from 'next/font/google'
+import { Roboto } from 'next/font/google'
+
+const notoSansJP = Noto_Sans_JP({
+  weight: ["300", "400"],
+  subsets: ["latin"],
+  variable: "--font-notojp",
+  display: "swap",
+});
+
+const roboto = Roboto({
+  weight: ["300", "400"],
+  subsets: ["latin"],
+  variable: "--font-roboto",
+  display: "swap",
+});
 
 const siteName = 'Kisa\'s Portfolio';
 const description = 'Kisaのポートフォリオサイトです．';
@@ -39,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ja">
+    <html lang="ja" className={`${notoSansJP.variable} ${roboto.variable}`}>
       <body suppressHydrationWarning={true}>
         <div className='flex flex-col min-h-screen'>
           <Header />
