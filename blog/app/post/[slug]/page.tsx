@@ -83,13 +83,13 @@ export default async function Page({ params }: { slug: string }) {
           className="object-contain m-auto h-full"
         />
       </div>
-      <h1 className='mt-12'>{page.frontMatter.data.title}</h1>
+      <h1 className='mt-12 font-notoSansJp'>{page.frontMatter.data.title}</h1>
       <span>{page.frontMatter.data.date}</span>
-      <div dangerouslySetInnerHTML={{ __html: articleHtml }} />
+      <div dangerouslySetInnerHTML={{ __html: articleHtml }} className='font-notoSansJp' />
 
       <div className='hidden md:block w-72 ml-3'>
         <div className='flex flex-col sticky top-6'>
-          <div className='p-4 border rounded-xl mb-6 bg-white'>
+          <div className='p-4 border rounded-xl mb-6 bg-white font-notoSansJp'>
             <p className='text-xl text-bold mb-4'>目次</p>
             <ul>
               {page.tableOfContent.map((anchor) => {

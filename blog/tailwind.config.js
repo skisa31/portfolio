@@ -14,6 +14,10 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
+    fontFamily: {
+      notoSansJp: ['Noto Sans JP', 'sans-serif'],
+      roboto: ['Roboto', 'sans-serif'],
+    },
   },
   plugins: [require('@tailwindcss/typography')],
 }

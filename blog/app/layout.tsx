@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ja">
+    <html lang="ja" className='font-roboto'>
       <body suppressHydrationWarning={true}>
         <div className='flex flex-col min-h-screen'>
           <Header />
