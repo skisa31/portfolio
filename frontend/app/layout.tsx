@@ -1,22 +1,6 @@
 import './globals.css'
 import Header from './header';
 import Footer from './footer';
-import { Noto_Sans_JP } from 'next/font/google'
-import { Roboto } from 'next/font/google'
-
-const notoSansJP = Noto_Sans_JP({
-  weight: ["300", "400"],
-  subsets: ["latin"],
-  variable: "--font-notojp",
-  display: "swap",
-});
-
-const roboto = Roboto({
-  weight: ["300", "400"],
-  subsets: ["latin"],
-  variable: "--font-roboto",
-  display: "swap",
-});
 
 const siteName = 'Kisa\'s Portfolio';
 const description = 'Kisaのポートフォリオサイトです．';
@@ -54,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ja" className={`${notoSansJP.variable} ${roboto.variable}`}>
+    <html lang="ja" className='font-roboto'>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
