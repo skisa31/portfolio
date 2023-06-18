@@ -55,6 +55,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" className={`${notoSansJP.variable} ${roboto.variable}`}>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body suppressHydrationWarning={true}>
         <div className='flex flex-col min-h-screen'>
           <Header />
