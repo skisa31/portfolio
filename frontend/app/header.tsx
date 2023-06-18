@@ -7,7 +7,11 @@ const Header = () => {
       <div className='max-w-6xl mx-auto pt-3 flex justify-between items-center h-12 roboto.variable'>
         <div className='h-max text-2xl hover:cursor-pointer'>
           <Link href="/">
-            <Image src='/logo.svg' width={50} height={50} />
+            <Image
+              src='/logo.svg'
+              width={50}
+              height={50}
+              alt='ロゴ' />
           </Link>
         </div>
         <span className='flex-1'></span>
