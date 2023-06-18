@@ -17,6 +17,8 @@ module.exports = {
       notoSansJp: ['Noto Sans JP', 'sans-serif'],
       roboto: ['Roboto', 'sans-serif'],
     },
-    plugins: [],
+    plugins: [
+      require('@tailwindcss/forms'),
+    ],
   }
 }
