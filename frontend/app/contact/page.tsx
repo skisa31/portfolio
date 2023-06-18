@@ -3,6 +3,7 @@
 import Header from "../header";
 import Footer from "../footer";
 import InputFiled from "../components/InputField";
+import TextareaField from "../components/TextareaField";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { AiFillGithub } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
@@ -82,36 +83,21 @@ const Contact = () => {
           <div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="pt-4">
-                <label htmlFor="name" className="block mb-2 text-xl text-left font-medium text-gray-900 font-notoSansJp dark:text-white">
-                  お名前
-                  <sup className="text-red-500"> *</sup>
-                </label>
-                <input type="text" id="name" {...register('name')} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="お名前" required />
-                {errors.name && <p className="text-sm text-left text-red-500">{errors.message?.message}</p>}
+                <InputFiled label="お名前" error={errors.name?.message} register={register('name')} required />
               </div>
             </form>
           </div>
           <div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="pt-4">
-                <label htmlFor="email" className="block mb-2 text-xl text-left font-medium text-gray-900 font-notoSansJp dark:text-white">
-                  メールアドレス
-                  <sup className="text-red-500"> *</sup>
-                </label>
-                <input type="text" id="email" {...register('email')} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="メールアドレス" required />
-                {errors.name && <p className="text-sm text-left text-red-500">{errors.message?.message}</p>}
+                <InputFiled label="メールアドレス" error={errors.email?.message} register={register('email')} required />
               </div>
             </form>
           </div>
           <div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="pt-4">
-                <label htmlFor="massage" className="block mb-2 text-xl text-left font-medium text-gray-900 font-notoSansJp dark:text-white">
-                  お問い合わせ内容
-                  <sup className="text-red-500"> *</sup>
-                </label>
-                <textarea id="message" {...register('message')} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-32 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="お問い合わせ内容" required />
-                {errors.name && <p className="text-sm text-left text-red-500">{errors.message?.message}</p>}
+                <TextareaField label="お問い合わせ内容" error={errors.message?.message} register={register('message')} required />
               </div>
             </form>
           </div>
