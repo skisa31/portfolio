@@ -4,7 +4,7 @@ import FieldGroup from "./FieldGroup";
 
 type Props = {
   label: string;
-  error: string;
+  error: string | undefined;
   currentLength?: number;
   register: UseFormRegisterReturn;
 } & TextareaAutosizeProps;
