@@ -18,10 +18,10 @@ const Header = () => {
         <div>
           <ul className='flex text-xl my-auto'>
             <li className='px-4 py-2 transition duration-300 hover:scale-125'>
-              About
+              <Link href='/about'> About </Link>
             </li>
             <li className='px-4 py-2 transition duration-300 hover:scale-125'>
-              Article
+              <Link href='/article'> Article </Link>
             </li>
             <li className='px-4 py-2 transition duration-300 hover:scale-125'>
               <Link href="http://localhost:3031">Blog</Link>
