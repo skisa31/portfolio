@@ -73,22 +73,33 @@ export default async function Page({ params }: { slug: string }) {
   const page = await getData(slug);
   const articleHtml = markdownhtml(page.frontMatter.content);
   return (
-    <div className='prose prose-lg w-screen mx-auto'>
-      <div className='border flex justify-center'>
-        <Image
-          src={`/${page.frontMatter.data.image}`}
-          width={800}
-          height={400}
-          alt={page.frontMatter.data.title}
-          className="object-contain m-auto h-full"
-        />
+    <div className='prose prose-lg max-w-6xl grid grid-cols-12'>
+      <div className='col-span-12'>
+        <div className='flex justify-center'>
+          <Image
+            src={`/${page.frontMatter.data.image}`}
+            width={400}
+            height={200}
+            alt={page.frontMatter.data.title}
+            className="object-contain m-auto h-full"
+          />
+        </div>
       </div>
-      <h1 className='mt-12 font-notoSansJp'>{page.frontMatter.data.title}</h1>
-      <span>{page.frontMatter.data.date}</span>
-      <div dangerouslySetInnerHTML={{ __html: articleHtml }} className='font-notoSansJp' />
+      <div className='col-span-2'>
+        <div className='flex flex-col sticky top-6 pt-24'>
+          <div className='p-4 border rounded-xl mb-6 bg-white font-notoSansJp'>
+            <p className='text-xl text-bold mb-4'>目次</p>
+          </div>
+        </div>
+      </div>
+      <div className='col-span-7 pt-4'>
+        <h1 className='mt-12 font-notoSansJp'>{page.frontMatter.data.title}</h1>
+        <span>{page.frontMatter.data.date}</span>
+        <div dangerouslySetInnerHTML={{ __html: articleHtml }} className='font-notoSansJp' />
+      </div>
 
-      <div className='hidden md:block w-72 ml-3'>
-        <div className='flex flex-col sticky top-6'>
+      <div className='col-span-3 hidden md:block ml-3 pt-4'>
+        <div className='flex flex-col sticky top-6 pt-24'>
           <div className='p-4 border rounded-xl mb-6 bg-white font-notoSansJp'>
             <p className='text-xl text-bold mb-4'>目次</p>
             <ul>
