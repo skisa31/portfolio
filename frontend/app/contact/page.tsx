@@ -4,6 +4,7 @@ import Header from "../header";
 import Footer from "../footer";
 import InputFiled from "../components/InputField";
 import TextareaField from "../components/TextareaField";
+import ReturnTop from "../components/ReturnTop";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { AiFillGithub } from "react-icons/ai";
 import { AiFillInstagram } from "react-icons/ai";
@@ -45,6 +46,9 @@ const Contact = () => {
 
   return (
     <div className='flex flex-col min-h-screen'>
+      <div>
+        <ReturnTop />
+      </div>
       <div className='max-w-6xl mx-auto font-roboto'>
         <div className='text-4xl mx-auto pt-10 text-center'>
           <h1>Contact</h1>
@@ -103,8 +107,8 @@ const Contact = () => {
           </div>
           <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="pt-4">
-                <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              <div className="py-4">
+                <button type="submit" className=" border border-black w-32 bg-white text-black hover:bg-black hover:text-white font-bold py-2 px-4 rounded">
                   送信
                 </button>
               </div>
