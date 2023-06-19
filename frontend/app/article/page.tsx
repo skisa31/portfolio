@@ -8,7 +8,7 @@ import Proceedings from '../components/Proceedings';
 
 const Article = () => {
   return (
-    <div className='flex'>
+    <div className='flex pb-6'>
       <div>
         <ReturnTop />
       </div>
