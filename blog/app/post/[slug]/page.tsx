@@ -1,6 +1,7 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import markdownhtml from 'zenn-markdown-html';
+import "zenn-content-css";
 import { JSDOM } from 'jsdom';
 import Image from 'next/image';
 import { table } from 'console';
@@ -73,8 +74,11 @@ export default async function Page({ params }: { slug: string }) {
   const page = await getData(slug);
   const articleHtml = markdownhtml(page.frontMatter.content);
   return (
-    <div className='prose prose-lg max-w-6xl grid grid-cols-12'>
-      <div className='col-span-12'>
+    <div className='prose prose-lg max-w-6xl grid grid-cols-12 pt-4'>
+      <div className='col-span-3 hidden md:block '>
+
+      </div>
+      <div className='col-span-6'>
         <div className='flex justify-center'>
           <Image
             src={`/${page.frontMatter.data.image}`}
@@ -85,35 +89,42 @@ export default async function Page({ params }: { slug: string }) {
           />
         </div>
       </div>
+      <div className='col-span-3'></div>
       <div className='col-span-2'>
-        <div className='flex flex-col sticky top-6 pt-24'>
-          <div className='p-4 border rounded-xl mb-6 bg-white font-notoSansJp'>
-            <p className='text-xl text-bold mb-4'>目次</p>
+        <div className='flex flex-col sticky top-6 pt-20'>
+          <p className='text-xl text-bold'>目次</p>
+          <div>
+            <ul>
+              <li>2023</li>
+              <li>2023</li>
+              <li>2023</li>
+              <li>2023</li>
+            </ul>
           </div>
         </div>
       </div>
       <div className='col-span-7 pt-4'>
-        <h1 className='mt-12 font-notoSansJp'>{page.frontMatter.data.title}</h1>
-        <span>{page.frontMatter.data.date}</span>
-        <div dangerouslySetInnerHTML={{ __html: articleHtml }} className='font-notoSansJp' />
+        <h1 className='mt-12 text-3xl font-bold font-notoSansJp'>{page.frontMatter.data.title}</h1>
+        <small className='text-gray-500'>投稿日: {page.frontMatter.data.date}</small>
+        <div dangerouslySetInnerHTML={{ __html: articleHtml }} className='znc font-notoSansJp' />
       </div>
 
       <div className='col-span-3 hidden md:block ml-3 pt-4'>
-        <div className='flex flex-col sticky top-6 pt-24'>
-          <div className='p-4 border rounded-xl mb-6 bg-white font-notoSansJp'>
-            <p className='text-xl text-bold mb-4'>目次</p>
+        <div className='flex flex-col sticky top-6 pt-20'>
+          <div className='pl-2 mb-6 bg-white font-notoSansJp'>
+            <p className='text-xl text-bold mb-4 underline'>目次</p>
             <ul>
               {page.tableOfContent.map((anchor) => {
                 if (anchor.level === 'H1') {
                   return (
                     <li className='mb-2' key={anchor.href}>
-                      <a href={`#${anchor.href}`}>{anchor.title}</a>
+                      <a href={`#${anchor.href}`} className='hover:text-blue-500'>{anchor.title}</a>
                     </li>
                   );
                 } else {
                   return (
                     <li className='ml-4 mb-2' key={anchor.href}>
-                      <a href={`#${anchor.href}`}>{anchor.title}</a>
+                      <a href={`#${anchor.href}`} className='hover:text-blue-500'>{anchor.title}</a>
                     </li>
                   );
                 }
