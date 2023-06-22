@@ -39,3 +39,6 @@ next-env.d.ts
 
 # pulic
 /public/
+
+# sendgrid API key
+sendgrid.env
